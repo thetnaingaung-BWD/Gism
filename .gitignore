@@ -1,0 +1,17 @@
+# Laravel-specific files
+/vendor/
+/.env
+
+# Node.js dependencies
+/node_modules/
+
+# IDE-specific files
+.idea/
+/.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
