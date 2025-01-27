@@ -20,7 +20,11 @@
     </div>
     @include('Admin-Dashboard.Edit-page.pages.enquireNow.enquire-modal')
     <div ondblclick="toggleModal('enquire-1')" class="relative max-lg:hidden">
-        <img src="{{ session()->has('enquire_welcome') ? Storage::url('tmp/enquire'.session('enquire_welcome')['enquire_bg_img']) :  asset('storage/asset/enquire/'.$enquireMedia[0]['img_path'])}}" />
+        @if(isset($enquireMedia[0]))
+        <img src="{{ session()->has('enquire_welcome') ? Storage::url('tmp/enquire/'.session('enquire_welcome')['enquire_bg_img']) :  asset('storage/asset/enquire/'.$enquireMedia[0]['img_path'])}}" />
+        @else
+        <img src="{{asset('assets/Enquire/hero_bg.webp')}}">
+        @endif
         <div class="bg-black absolute top-0 right-0 left-0 bottom-0 bg-opacity-20"></div>
         <p
             class="font-oswald text-sunflower_yellow text-[5rem] font-medium leading-[1.5em] absolute top-1/2 w-[55%] max-xl:w-[75%] left-1/2 -translate-x-[59%] -translate-y-[30%]">
@@ -91,6 +95,10 @@
                 </form>
             </div>
         </div>
-        <img class="w-1/2 max-lg:w-full object-cover" src="{{ session()->has('enquire_form') ? Storage::url('tmp/enquire'.session('enquire_form')['enquire_form_img']) :  asset('storage/asset/enquire/'.$enquireMedia[1]['img_path'])}}" />
+        @if(isset($enquireMedia[1]))
+            <img class="w-1/2 max-lg:w-full object-cover" src="{{ session()->has('enquire_form') ? Storage::url('tmp/enquire/'.session('enquire_form')['enquire_form_img']) :  asset('storage/asset/enquire/'.$enquireMedia[1]['img_path'])}}" />
+        @else
+            <img src="{{asset('assets/Enquire/bb21e7_a33d0ea1148444e78468410a5caf65ee~mv2.webp')}}" class="w-1/2 max-lg:w-full object-cover">
+        @endif
     </div>
 @endsection

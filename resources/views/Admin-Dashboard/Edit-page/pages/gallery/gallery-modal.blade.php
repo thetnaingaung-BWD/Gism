@@ -21,7 +21,11 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
-                <img class="object-contain  h-60 w-96 m-auto" src= "{{ asset('storage/asset/gallery/'.$galleryWelcome->img_path) }}">
+                @if(isset($galleryWelcome))
+                  <img class="object-contain  h-60 w-96 m-auto" src= "{{ asset('storage/asset/gallery/'.$galleryWelcome->img_path) }}">
+                @else   
+                  <img src="{{asset('assets/Gallery/bb21e7_e802ac35a1d341eea4ca693b0e4ffdfc~mv2.webp')}}">
+                @endif
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>

@@ -21,9 +21,13 @@
     </div>
     @include('Admin-Dashboard.Edit-page.pages.home-modal')
     <div class="relative" ondblclick="toggleModal('modal-1','fileInput-1')">
+      @if(isset($homeMedia[0]))
         <img class="w-full h-[88.5svh] max-xl:h-[41.875rem] max-lg:h-[36.25rem] max-md:h-[30.625rem] max-sm:h-[25rem] object-cover"
-            src= "{{ session()->has('welcome-media') ?  Storage::url('tmp/home/'.session('welcome-media')['welcome_bg_img'])  : asset("storage/asset/home/".$homeMedia[0]['img_path']) }}"/>
-
+            src="{{ session()->has('welcome-media') ? Storage::url('tmp/home/'.session('welcome-media')['welcome_bg_img']) :  asset('storage/asset/home/'.$homeMedia[0]['img_path']) }}"/>
+      @else
+          <img class="w-full h-[88.5svh] max-xl:h-[41.875rem] max-lg:h-[36.25rem] max-md:h-[30.625rem] max-sm:h-[25rem] object-cover" src="{{asset('assets/Home/bb21e7_185db25cb6b44f4bbbf1cf109e234b62~mv2.webp')}}"/>
+      @endif
+      
         <div class="absolute top-0 left-0 bottom-0 right-0 bg-black bg-opacity-10"></div>
         <div class="absolute top-1/2 -translate-y-1/2 w-[55%] max-sm:w-[70%] left-1/2 -translate-x-[55%]">
             <p
@@ -44,9 +48,11 @@
             src="{{ asset('assets/General/download.svg') }}">
     </div>
     <div ondblclick="toggleModal('modal-2','fileInput-2')">
+      @if(isset($homeMedia[1]))
         <img class="rounded-full p-1 custom-shadow w-[18rem] max-xl:w-[16.78125rem] max-lg:w-[15.5625rem] max-md:w-[14.34375rem] max-sm:w-[13.125rem] mx-auto bg-white mt-36 max-xl:mt-28 max-lg:mt-20 max-md:mt-14 max-sm:mt-10"
             src="{{ session()->has('president-media') ? Storage::url('tmp/home/'.session('president-media')['president_photo']) :  asset('storage/asset/home/'.$homeMedia[1]['img_path'])}}"
             />
+      @endif
         <h1
             class="text-center text-[2.8rem] max-xl:text-[2.490625rem] max-lg:text-[2.18125rem] max-md:text-[1.871875rem] max-sm:text-[1.5625rem] font-oswald font-medium mt-6">
         {{ __('home.welcome') }}</h1>
@@ -88,8 +94,10 @@
                 class="leading-9 text-[1rem] max-xl:text-[0.953125rem] max-lg:text-[0.90625rem] max-md:text-[0.859375rem] max-sm:text-[0.8125] max-md:text-center">
                 {{ session()->has('vision-mission-content') ? session('vision-mission-content')['mission_context'][session()->get('lang')] : translate('mission_context')}}</p>
         </div>
+        @if(isset($homeMedia[2]))
         <img class="w-1/2 max-xl:w-full max-xl:h-[37.5rem] max-lg:h-[31.25] max-md:h-[25rem] max-sm:h-[18.75rem] object-cover"
             src="{{ session()->has('vision-mission-media') ?  Storage::url('tmp/home/'.session('vision-mission-media')['vision_mission_bg']) :  asset('storage/asset/home/'.$homeMedia[2]['img_path']) }}" />
+        @endif
     </div>
 
     <div ondblclick="toggleModal('modal-4')"

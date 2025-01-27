@@ -6,7 +6,6 @@ use App\Models\Content;
 if (!function_exists('translate')) {
     function translate($key , $locale = null)
     {
-        // dd($key);
         $locale == null ? $locale = app()->getLocale() : $locale;
         $translation = Content::where('key', $key)->first();
 

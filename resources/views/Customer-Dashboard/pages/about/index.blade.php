@@ -1,7 +1,11 @@
 @extends('Customer-Dashboard.layout.master')
 @section('content')
     <div class="relative max-lg:hidden">
+        @if(isset($aboutMedia[0]))
         <img src="{{ asset('storage/asset/about/'.$aboutMedia[0]['img_path']) }}" />
+        @else
+        <img src="{{ asset('assets/About/bb21e7_e1de3e9ec5e0402dbe6da4537b485b58~mv2.webp')}}" />
+        @endif
         <p
             class="font-oswald text-sunflower_yellow text-[4.5rem] font-bold leading-[1.25em] absolute top-1/2 -translate-y-1/2 w-[55%] max-xl:w-4/5 left-1/2 -translate-x-[55%]">
             {{ __('general.school_name') }}</p>
@@ -14,10 +18,14 @@
                 {{ __('about.our_history_title') }}</h6>
             <p
                 class="font-montserrat mt-10 max-lg:mt-5 max-md:mt-2 leading-[1.88em] max-xl:text-[0.96875rem] max-lg:text-[0.9375rem] max-md:text-[0.90625rem] max-sm:text-[0.875rem]">
-                {{ __('about.our_history_content') }}</p>
+                {{ translate('our_history_content') }}</p>
         </div>
+        @if(isset($aboutMedia[1]))
         <img class="w-1/2 max-md:w-full object-cover"
             src="{{ asset('storage/asset/about/'.$aboutMedia[1]['img_path']) }}" />
+        @else
+        <img class="w-1/2 max-md:w-full object-cover" src="{{asset('assets/About/bb21e7_111b8172203d41b2951b4af6d9f1b2af~mv2.webp')}}">
+        @endif
     </div>
     <div class="bg-royal_blue w-full text-white pt-10 pb-20 max-md:py-10">
         <p
@@ -25,9 +33,15 @@
             {{ __('about.about_school_title') }}</p>
         <div
             class="flex flex-col font-montserrat text-[1.0625rem] max-xl:text-[1.015625rem] max-lg:text-[0.96875rem] max-md:text-[0.921875rem] max-sm:text-[0.875rem] w-1/2 max-lg:w-4/5 max-md:w-[90%] mx-auto gap-8 mt-16 max-lg:mt-8 max-md:mt-4">
-            @foreach (__('about.about_school') as $item)
-                <p>{{ __($item) }}</p>
-            @endforeach
+            @if(isset($contents))
+                @foreach ($contents as $item)
+                    <p>{{ translate($item->key) }}</p>
+                @endforeach
+            @else
+                @foreach (__('about.about_school') as $item)
+                    <p>{{ __($item) }}</p>
+                @endforeach
+            @endif
         </div>
     </div>
     <div class="py-5">

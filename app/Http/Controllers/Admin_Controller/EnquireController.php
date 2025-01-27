@@ -68,7 +68,7 @@ class EnquireController extends Controller
         return back();
     }
     public function resetBtn(HomeController $homeController) {
-
+        
         $sessionData = $this->getSessionData();
 
         $homeController->resetAndDelete($sessionData,'tmp/enquire');

@@ -16,7 +16,7 @@ class FaqController extends Controller
     use Loggable;
     public function index() {
         $faqs = Content::where('section','faqs')->get();
-
+        
         $faqsMedia = Media::where('section','faqs')->first();
         
         return view('Admin-Dashboard.Edit-page.pages.faq.index',compact('faqs','faqsMedia'));

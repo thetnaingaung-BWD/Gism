@@ -21,9 +21,13 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+            @if(isset($aboutMedia[0]))
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 <img class="object-contain  h-60 w-96 m-auto" src="{{ session()->has('about-welcome-media') ? Storage::url('tmp/about/'.session('about-welcome-media')['about_bg_img']) :  asset('storage/asset/about/'.$aboutMedia[0]['img_path'])}}" >
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                </div>
+              </div>
+            @else
+              <img class="object-contain  h-60 w-96 m-auto" src="{{ asset('assets/About/bb21e7_e1de3e9ec5e0402dbe6da4537b485b58~mv2.webp')}}" />
+            @endif
             </div>
           <label class="block text-sm font-medium text-gray-700 mb-2">Upload Background Image *</label>
            <div class="grow">
@@ -76,7 +80,11 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
-                <img class="object-contain  h-60 w-96 m-auto" src=" {{ session()->has('about-our-history-media') ? Storage::url('/tmp/about/'.session('about-our-history-media')['our_history_img']) :  asset('storage/asset/about/'.$aboutMedia[1]['img_path'])}}" >
+              @if(isset($aboutMedia[1]))
+              <img class="object-contain  h-60 w-96 m-auto" src=" {{ session()->has('about-our-history-media') ? Storage::url('/tmp/about/'.session('about-our-history-media')['our_history_img']) :  asset('storage/asset/about/'.$aboutMedia[1]['img_path'])}}" >
+              @else
+              <img src="{{asset('assets/About/bb21e7_111b8172203d41b2951b4af6d9f1b2af~mv2.webp')}}" class="object-contain  h-60 w-96 m-auto">
+              @endif
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>

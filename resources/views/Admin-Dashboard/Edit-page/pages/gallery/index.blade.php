@@ -20,7 +20,13 @@
     </div>
      @include('Admin-Dashboard.Edit-page.pages.gallery.gallery-modal')
     <div class="relative max-md:hidden" ondblclick="toggleModal('gallery-1')">
-        <img src="{{ asset('storage/asset/gallery/'.$galleryWelcome->img_path) }}" />
+
+        @if(isset($galleryWelcome))
+            <img src="{{ asset('storage/asset/gallery/'.$galleryWelcome->img_path) }}" />
+        @else   
+            <img src="{{asset('assets/Gallery/bb21e7_e802ac35a1d341eea4ca693b0e4ffdfc~mv2.webp')}}">
+        @endif
+
         <div class="absolute top-0 bottom-0 left-0 right-0 bg-royal_blue bg-opacity-20">
         </div>
         <p
@@ -30,7 +36,7 @@
     <div class="bg-sunflower_yellow pt-8 pb-36 max-lg:pb-20 max-md:pb-10" ondblclick="toggleModal('gallery-2')">
         <h1 class="font-oswald font-medium text-[3.5rem] text-center mb-8">{{ __('gallery.campus_life_title') }}</h1>
         <div class="w-[70%] max-xl:w-[75%] max-lg:w-[85%] max-md:w-[90%] mx-auto grid grid-cols-6 gap-2 max-lg:gap-4">
-            @if ($campusLife)
+            @if ($campusLife->count() > 0)
                 @foreach ($campusLife as $item)
                     <div class="col-span-2 max-lg:col-span-3 max-md:col-span-full relative">
                         <!-- Cancel Button -->
@@ -124,7 +130,7 @@
     @endphp
 
     <div class="grid gap-4 mb-10" style="grid-template-columns: repeat(24, minmax(0, 1fr)); grid-template-rows: repeat(25, minmax(0,50px))" ondblclick="toggleModal('gallery-3')">
-        @if ($activities)
+        @if ($activities->count() > 0)
             @foreach ($activities as $key => $item)
                 <div class="w-full h-full overflow-hidden {{$images[$key]['class_1']}}" >
                     <img class="w-full h-full object-cover animated-element move" src="{{ asset('storage/asset/gallery/'.$item->img_path) }}" />

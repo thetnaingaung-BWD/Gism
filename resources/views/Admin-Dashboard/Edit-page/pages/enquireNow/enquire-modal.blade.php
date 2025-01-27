@@ -21,7 +21,11 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+                @if(isset($enquireMedia[0]))
                 <img class="object-contain  h-60 w-96 m-auto" src="{{ session()->has('enquire_welcome') ? Storage::url('tmp/enquire/'.session('enquire_welcome')['enquire_bg_img']) :  asset('storage/asset/enquire/'.$enquireMedia[0]['img_path'])}}" >
+                @else
+                <img class="object-contain  h-60 w-96 m-auto" src="{{asset('assets/Enquire/hero_bg.webp')}}" >
+                @endif
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>
@@ -73,8 +77,12 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+            @if(isset($enquireMedia[1]))
                 <img class="object-contain  h-60 w-96 m-auto" src="{{ session()->has('enquire_form') ? Storage::url('tmp/enquire/'.session('enquire_form')['enquire_form_img']) :  asset('storage/asset/enquire/'.$enquireMedia[1]['img_path'])}}" >
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            @else
+              <img class="object-contain  h-60 w-96 m-auto" src="{{asset('assets/Enquire/bb21e7_a33d0ea1148444e78468410a5caf65ee~mv2.webp')}}" >
+            @endif
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>
           <label class="block text-sm font-medium text-gray-700 mb-2">Upload Background Image *</label>

@@ -14,11 +14,12 @@ class AboutController extends Controller
 {
     use Loggable;
     public function index() {
-        $contents =  Content::where('section','about')->get()->skip(1);
+        $contents =  Content::where('key', 'like', 'about_school_%')->get();
         $aboutMedia = Media::where('section','about')->get();
         return view('Admin-Dashboard.Edit-page.pages.about.index',compact('contents','aboutMedia'));
     }
     public function editAbout(Request $request) {
+
         $media = [];
 
         $newImageName = $this->uploadImage($request, 'about_bg_img','tmp/about');
@@ -88,7 +89,7 @@ class AboutController extends Controller
     }
 
     public function resetBtn() {
-
+        
         $sessionData = $this->getSessionData();
 
         $this->resetAndDelete($sessionData,'tmp/about');
@@ -108,9 +109,7 @@ class AboutController extends Controller
             $homeContent['our-history-content'] = session('our-history-content');
             $homeContent['president-content'] = session('president-content');
             $homeContent['about-school-list'] = session('about-school-list');
-            // foreach (session('about-school-list') as $key => $item) {
-            //     $homeContent[$key] = $item;
-            // }
+            
 
             $homeMedia = [];
             $homeMedia['about-welcome-media'] = session('about-welcome-media');

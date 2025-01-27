@@ -23,7 +23,9 @@
 
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+              @if(isset($homeMedia[0]))
                 <img class="object-contain  h-60 w-96 m-auto" src= "{{ session()->has('welcome-media') ? Storage::url('tmp/home/'.session('welcome-media')['welcome_bg_img']) :  asset('storage/asset/home/'.$homeMedia[0]['img_path']) }}">
+              @endif
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>
@@ -139,9 +141,11 @@
          <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+            @if(isset($homeMedia[1]))
                 <img class="object-contain  h-60 w-96 m-auto" src=" {{ session()->has('president-media') ? Storage::url('tmp/home/'.session('president-media')['president_photo']) :  asset('storage/asset/home/'.$homeMedia[1]['img_path'])}}" >
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
+            @endif
             </div>
           <label class="block text-sm font-medium text-gray-700 mb-2">Upload Background Image *</label>
            <div class="grow">
@@ -245,7 +249,9 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+              @if(isset($homeMedia[2]))
                 <img class="object-contain  h-60 w-96 m-auto" src="{{ session()->has('vision-mission-media') ? Storage::url('tmp/home/'.session('vision-mission-media')['vision_mission_bg']) :  asset('storage/asset/home/'.$homeMedia[2]['img_path']) }}">
+              @endif
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>

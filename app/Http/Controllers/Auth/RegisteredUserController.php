@@ -45,6 +45,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
 
-        return redirect(route('contact_form_blade', absolute: false));
+        return redirect(route('enquire_form_blade', absolute: false));
     }
 }

@@ -21,8 +21,11 @@
     @include('Admin-Dashboard.Edit-page.pages.about.about-modal')
 
     <div ondblclick="toggleModal('about-1')" class="relative max-lg:hidden">
-
+        @if(isset($aboutMedia[0]))
         <img src="{{ session()->has('about-welcome-media') ? Storage::url('tmp/about/'.session('about-welcome-media')['about_bg_img']) :  asset('storage/asset/about/'.$aboutMedia[0]['img_path'])}}" />
+        @else
+        <img src="{{ asset('assets/About/bb21e7_e1de3e9ec5e0402dbe6da4537b485b58~mv2.webp')}}" />
+        @endif
         <p
             class="font-oswald text-sunflower_yellow text-[4.5rem] font-bold leading-[1.25em] absolute top-1/2 -translate-y-1/2 w-[55%] max-xl:w-4/5 left-1/2 -translate-x-[55%]">
             {{ __('general.school_name') }}</p>
@@ -39,8 +42,13 @@
                 {{ session()->has('our-history-content') ? session('our-history-content')['our_history_content'][session()->get('lang')] : translate('our_history_content') }}
             </p>
         </div>
-        <img class="w-1/2 max-md:w-full object-cover"
-            src="{{ session()->has('about-our-history-media') ? Storage::url('tmp/about/'.session('about-our-history-media')['our_history_img']) :  asset('storage/asset/about/'.$aboutMedia[1]['img_path'])}}" />
+        @if(isset($aboutMedia[1]))
+            <img class="w-1/2 max-md:w-full object-cover"
+                src="{{ session()->has('about-our-history-media') ? Storage::url('tmp/about/'.session('about-our-history-media')['our_history_img']) :  asset('storage/asset/about/'.$aboutMedia[1]['img_path'])}}" />
+        @else
+            <img class="w-1/2 max-md:w-full object-cover" src="{{asset('assets/About/bb21e7_111b8172203d41b2951b4af6d9f1b2af~mv2.webp')}}"/>
+        @endif
+        
     </div>
 
     <div class="bg-royal_blue w-full text-white pt-10 pb-20 max-md:py-10">

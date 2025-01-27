@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="relative max-lg:hidden">
+    @if(isset($enquireMedia[0]))
         <img src="{{ asset('storage/asset/enquire/'.$enquireMedia[0]['img_path']) }}" />
+    @else
+        <img src="{{asset('assets/Enquire/hero_bg.webp')}}">
+    @endif
         <div class="bg-black absolute top-0 right-0 left-0 bottom-0 bg-opacity-20"></div>
         <p
             class="font-oswald text-sunflower_yellow text-[5rem] font-medium leading-[1.5em] absolute top-1/2 w-[55%] max-xl:w-[75%] left-1/2 -translate-x-[59%] -translate-y-[30%]">
@@ -93,8 +97,12 @@
                 </form>
             </div>
         </div>
+        @if(isset($enquireMedia[1]))
         <img class="w-1/2 max-lg:w-full object-cover"
             src="{{ asset('storage/asset/enquire/'.$enquireMedia[1]['img_path']) }}" />
+        @else
+            <img class="w-1/2 max-lg:w-full object-cover" src="{{asset('assets/Enquire/bb21e7_a33d0ea1148444e78468410a5caf65ee~mv2.webp')}}"/>
+        @endif
     </div>
 <script>
     const checkbox = document.getElementById('accept-policy-enquire-checkbox');

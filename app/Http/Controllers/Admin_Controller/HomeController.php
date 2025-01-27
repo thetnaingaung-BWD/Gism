@@ -18,10 +18,11 @@ class HomeController extends Controller
 {
     use Loggable;
     public function index() {
+        session()->put('lang','en');
         $translations = Content::select('key')->where('section','home')->get();
 
         $homeMedia = Media::where('section','home')->get();
-        
+        // dd(isset($homeMedia[0]));
         return view('Admin-Dashboard.Edit-page.pages.home',compact('translations','homeMedia'));
     }
     public function contact_mail(Request $request) {
@@ -141,6 +142,7 @@ class HomeController extends Controller
         return back();
     }
     public function SaveBtn() {
+
         $sessionData = $this->getSessionData();
 
         $this->SaveAndStore($sessionData,'home');
@@ -148,7 +150,7 @@ class HomeController extends Controller
         return back();
     }
     public function resetBtn() {
-
+        
         $sessionData = $this->getSessionData();
 
         $this->resetAndDelete($sessionData,'tmp/home');

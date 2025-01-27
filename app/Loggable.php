@@ -75,9 +75,11 @@ trait Loggable
                               ->where('section',$section)
                               ->first();
                         // Delete old image
-                        if (Storage::disk('public')->exists('asset/'.$section.'/'. $oldImagePath->img_path)) {
+                        if($oldImagePath != null){
+                            if (Storage::disk('public')->exists('asset/'.$section.'/'. $oldImagePath->img_path)) {
 
-                            Storage::disk('public')->delete('asset/'.$section.'/'. $oldImagePath->img_path);
+                                Storage::disk('public')->delete('asset/'.$section.'/'. $oldImagePath->img_path);
+                            }
                         }
                         Media::where('title',$title)
                               ->where('section',$section)

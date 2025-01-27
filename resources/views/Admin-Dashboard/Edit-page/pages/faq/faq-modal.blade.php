@@ -20,7 +20,11 @@
         <!-- Upload Image -->
         <div class="mb-4 parentDiv">
             <div class="m-5  imageContainer">
+              @if(isset($faqsMedia))
                 <img class="object-contain  h-60 w-96 m-auto" src="{{ session()->has('faqs-welcome-media') ? Storage::url('tmp/faqs/'.session('faqs-welcome-media')['faqs_bg_img']) :  $faqsMedia->img_path}}" >
+              @else
+                <img src="{{asset('assets/Faq/bb21e7_c2bb00ab4b0b4b3e8027cd85720743f3~mv2.webp')}}" class="object-contain  h-60 w-96 m-auto">
+              @endif
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 </div>
             </div>
@@ -81,7 +85,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question section 1"
-                  value="{{ session()->get('faqs-content-1')['faqs_ques_1']['en'] ??  translate($faqs[0]->key,'en')  }}"
+                  @if($faqs->count() > 0)
+                    value="{{ session()->get('faqs-content-1')['faqs_ques_1']['en'] ??  translate($faqs[0]->key,'en')  }}"
+                  @endif
                   name="faqs_ques_1[en]"
                   required
                 >
@@ -94,7 +100,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question section 1"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-1')['faqs_ques_1']['th'] ??  translate($faqs[0]->key,'th')  }}"
+                  @endif
                   name="faqs_ques_1[th]"
                   required
                 >
@@ -107,7 +115,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question section 1"
-                  value="{{ session()->get('faqs-content-1')['faqs_ques_1']['zh'] ??  translate($faqs[0]->key,'zh')  }}"
+                  @if($faqs->count() > 0)
+                    value="{{ session()->get('faqs-content-1')['faqs_ques_1']['zh'] ??  translate($faqs[0]->key,'zh')  }}"
+                  @endif
                   name="faqs_ques_1[zh]"
                   required
                 >
@@ -119,15 +129,15 @@
         <div class="grid grid-cols-3">
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (EN)</label>
-              <textarea name="faqs_ans_1[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer section 1" required>{{ session()->get('faqs-content-1')['faqs_ans_1']['en'] ??  translate($faqs[1]->key,'en')  }}</textarea>
+              <textarea name="faqs_ans_1[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer section 1" required>@if($faqs->count() > 0){{ session()->get('faqs-content-1')['faqs_ans_1']['en'] ??  translate($faqs[1]->key,'en')  }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (TH)</label>
-              <textarea name="faqs_ans_1[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer section 1" required>{{ session()->get('faqs-content-1')['faqs_ans_1']['th'] ??  translate($faqs[1]->key,'th')  }}</textarea>
+              <textarea name="faqs_ans_1[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer section 1" required>@if($faqs->count() > 0){{ session()->get('faqs-content-1')['faqs_ans_1']['th'] ??  translate($faqs[1]->key,'th')  }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (ZH)</label>
-              <textarea name="faqs_ans_1[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer section 1" required>{{ session()->get('faqs-content-1')['faqs_ans_1']['zh'] ??  translate($faqs[1]->key,'zh')  }}</textarea>
+              <textarea name="faqs_ans_1[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer section 1" required>@if($faqs->count() > 0){{ session()->get('faqs-content-1')['faqs_ans_1']['zh'] ??  translate($faqs[1]->key,'zh')  }}@endif</textarea>
             </div>
         </div>
 
@@ -173,7 +183,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question Section 2"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-2')['faqs_ques_2']['en'] ??  translate($faqs[2]->key,'en')  }}"
+                  @endif
                   name="faqs_ques_2[en]"
                   required
                 >
@@ -186,7 +198,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question Section 2"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-2')['faqs_ques_2']['th'] ??  translate($faqs[2]->key,'th')  }}"
+                  @endif
                   name="faqs_ques_2[th]"
                   required
                 >
@@ -199,7 +213,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question Section 2"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-2')['faqs_ques_2']['zh'] ??  translate($faqs[2]->key,'zh')  }}"
+                  @endif
                   name="faqs_ques_2[zh]"
                   required
                 >
@@ -211,15 +227,15 @@
         <div class="grid grid-cols-3">
             <div class="mb-4 mx-2">
                 <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (EN)</label>
-                <textarea name="faqs_ans_2[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 2" required>{{ session()->get('faqs-content-2')['faqs_ans_2']['en'] ??  translate($faqs[3]->key,'en')  }}</textarea>
+                <textarea name="faqs_ans_2[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 2" required>@if($faqs->count() > 0){{ session()->get('faqs-content-2')['faqs_ans_2']['en'] ??  translate($faqs[3]->key,'en') }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
                 <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (TH)</label>
-                <textarea name="faqs_ans_2[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 2" required>{{ session()->get('faqs-content-2')['faqs_ans_2']['th'] ??  translate($faqs[3]->key,'th')  }}</textarea>
+                <textarea name="faqs_ans_2[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 2" required>@if($faqs->count() > 0){{ session()->get('faqs-content-2')['faqs_ans_2']['th'] ??  translate($faqs[3]->key,'th') }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
                 <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (ZH)</label>
-                <textarea name="faqs_ans_2[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 2" required>{{ session()->get('faqs-content-2')['faqs_ans_2']['zh'] ??  translate($faqs[3]->key,'zh')  }}</textarea>
+                <textarea name="faqs_ans_2[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 2" required>@if($faqs->count() > 0){{ session()->get('faqs-content-2')['faqs_ans_2']['zh'] ??  translate($faqs[3]->key,'zh') }}@endif</textarea>
             </div>
         </div>
         <!-- Submit Button -->
@@ -264,7 +280,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question Section 3"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-3')['faqs_ques_3']['en'] ??  translate($faqs[4]->key)  }}"
+                  @endif
                   name="faqs_ques_3[en]"
                   required
                 >
@@ -277,7 +295,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question Section 3"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-3')['faqs_ques_3']['th'] ??  translate($faqs[4]->key)  }}"
+                  @endif
                   name="faqs_ques_3[th]"
                   required
                 >
@@ -290,7 +310,9 @@
                   type="text"
                   class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                   placeholder="Question Section 3"
+                  @if($faqs->count() > 0)
                   value="{{ session()->get('faqs-content-3')['faqs_ques_3']['zh'] ??  translate($faqs[4]->key)  }}"
+                  @endif
                   name="faqs_ques_3[zh]"
                   required
                 >
@@ -302,15 +324,15 @@
         <div class="grid grid-cols-3">
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (EN)</label>
-              <textarea name="faqs_ans_3[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 3" required>{{ session()->get('faqs-content-3')['faqs_ans_3']['en'] ??  translate($faqs[5]->key,'en')  }}</textarea>
+              <textarea name="faqs_ans_3[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 3" required>@if($faqs->count() > 0){{ session()->get('faqs-content-3')['faqs_ans_3']['en'] ??  translate($faqs[5]->key,'en')  }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (TH)</label>
-              <textarea name="faqs_ans_3[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 3" required>{{ session()->get('faqs-content-3')['faqs_ans_3']['th'] ??  translate($faqs[5]->key,'th')  }}</textarea>
+              <textarea name="faqs_ans_3[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 3" required>@if($faqs->count() > 0){{ session()->get('faqs-content-3')['faqs_ans_3']['th'] ??  translate($faqs[5]->key,'th')  }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (ZH)</label>
-              <textarea name="faqs_ans_3[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 3" required>{{ session()->get('faqs-content-3')['faqs_ans_3']['zh'] ??  translate($faqs[5]->key,'zh')  }}</textarea>
+              <textarea name="faqs_ans_3[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 3" required>@if($faqs->count() > 0){{ session()->get('faqs-content-3')['faqs_ans_3']['zh'] ??  translate($faqs[5]->key,'zh')  }}@endif</textarea>
             </div>
         </div>
 
@@ -356,7 +378,9 @@
                     type="text"
                     class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                     placeholder="Question Section 4"
+                    @if($faqs->count() > 0)
                     value="{{ session()->get('faqs-content-4')['faqs_ques_4']['en'] ??  translate($faqs[6]->key,'en')  }}"
+                    @endif
                     name="faqs_ques_4[en]"
                     required>
                 </div>
@@ -368,7 +392,9 @@
                     type="text"
                     class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                     placeholder="Question Section 4"
+                    @if($faqs->count() > 0)
                     value="{{ session()->get('faqs-content-4')['faqs_ques_4']['th'] ??  translate($faqs[6]->key,'th')  }}"
+                    @endif
                     name="faqs_ques_4[th]"
                     required>
                 </div>
@@ -380,7 +406,9 @@
                     type="text"
                     class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
                     placeholder="Question Section 4"
+                    @if($faqs->count() > 0)
                     value="{{ session()->get('faqs-content-4')['faqs_ques_4']['zh'] ??  translate($faqs[6]->key,'zh')  }}"
+                    @endif
                     name="faqs_ques_4[zh]"
                     required>
                 </div>
@@ -391,15 +419,15 @@
         <div class="grid grid-cols-3">
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (EN)</label>
-              <textarea name="faqs_ans_4[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 4" required>{{ session()->get('faqs-content-4')['faqs_ans_4']['en'] ??  translate($faqs[7]->key,'en')  }}</textarea>
+              <textarea name="faqs_ans_4[en]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 4" required>@if($faqs->count() > 0){{ session()->get('faqs-content-4')['faqs_ans_4']['en'] ??  translate($faqs[7]->key,'en')  }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (TH)</label>
-              <textarea name="faqs_ans_4[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 4" required>{{ session()->get('faqs-content-4')['faqs_ans_4']['th'] ??  translate($faqs[7]->key,'th')  }}</textarea>
+              <textarea name="faqs_ans_4[th]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 4" required>@if($faqs->count() > 0){{ session()->get('faqs-content-4')['faqs_ans_4']['th'] ??  translate($faqs[7]->key,'th')  }}@endif</textarea>
             </div>
             <div class="mb-4 mx-2">
               <label class="block text-sm font-medium text-gray-700 mb-1">FAQs Answer (ZH)</label>
-              <textarea name="faqs_ans_4[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 4" required>{{ session()->get('faqs-content-4')['faqs_ans_4']['zh'] ??  translate($faqs[7]->key,'zh')  }}</textarea>
+              <textarea name="faqs_ans_4[zh]" id="" cols="30" rows="10" class="block w-full text-sm border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500" placeholder="Answer Section 4" required>@if($faqs->count() > 0){{ session()->get('faqs-content-4')['faqs_ans_4']['zh'] ??  translate($faqs[7]->key,'zh')  }}@endif</textarea>
             </div>
         </div>
 
